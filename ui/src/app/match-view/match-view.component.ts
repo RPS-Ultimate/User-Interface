@@ -14,8 +14,8 @@ export class MatchViewComponent implements OnInit {
   outcome: Outcome;
   message: String;
   gameIsInSession: Boolean;
-  // userImg: Observable<string>;
-  // botImg: Observable<string>;
+  userImg: String = "../../assets/rock-icon.png";
+  botImg: String = "../../assets/rock-icon.png";
   moves: string[];
   
   constructor(private outcomeService: OutcomeService, private imageService: ImageService, private router: Router) { 
@@ -39,6 +39,8 @@ export class MatchViewComponent implements OnInit {
   getOutcome(userMove: number) {
     this.outcomeService.getOutcome(userMove).subscribe((res) => {
       this.outcome = res;
+      this.userImg = `../../assets/${this.moves[this.outcome.userMove]}-icon.png`
+      this.botImg = `../../assets/${this.moves[this.outcome.botMove]}-icon.png`
       if (this.outcome.isADraw) {
         this.message = "It's a draw. Continue the match...";
       } else if (this.outcome.userWins) {

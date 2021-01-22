@@ -1,22 +1,26 @@
 <div class="match__main">
     <div class="match__view">
-        <!-- <div class="match__userImg">
-            <img src="{{ userImg }}"/>
-        </div> -->
-        <!-- <div class="match__botImg">
-            <img src="{{ botImg }}"/>
-        </div> -->
-        <div class="match__message">
-            <p>{{ message }}</p>
+        <div class="match__view-header">
+            <div class="match__view-header-user">
+                <h1>User</h1>
+            </div>
+            <div class="match__view-header-bot">
+                <h1>Bot</h1>
+            </div>
         </div>
-        <div *ngIf="gameIsInSession; else elseBlock">
-            <button (click)="getOutcome(1)">Rock</button>
-            <button (click)="getOutcome(2)">Paper</button>
-            <button (click)="getOutcome(3)">Scissors</button>
-        </div>
-        <ng-template #elseBlock>
-            <button (click)="homeMenu()">Home Menu</button>
-            <button (click)="startNewMatch()">New Match</button>
-        </ng-template>
+        <img src="{{ userImg }}"/>
+        <img src="{{ botImg }}"/>
     </div>
+    <div class="match__message">
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="gameIsInSession; else elseBlock">
+        <button (click)="getOutcome(1)">Rock</button>
+        <button (click)="getOutcome(2)">Paper</button>
+        <button (click)="getOutcome(3)">Scissors</button>
+    </div>
+    <ng-template #elseBlock>
+        <button (click)="homeMenu()">Home Menu</button>
+        <button (click)="startNewMatch()">New Match</button>
+    </ng-template>
 </div> 
