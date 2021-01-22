@@ -1,0 +1,12 @@
+.header__main {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 200px 5px 150px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 0 50px 0;
+  }
+  
