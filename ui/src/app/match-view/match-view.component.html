@@ -15,9 +15,9 @@
         <p>{{ message }}</p>
     </div>
     <div *ngIf="gameIsInSession; else elseBlock">
-        <button (click)="getOutcome(1)">Rock</button>
-        <button (click)="getOutcome(2)">Paper</button>
-        <button (click)="getOutcome(3)">Scissors</button>
+        <button (click)="getOutcome(0)">Rock</button>
+        <button (click)="getOutcome(1)">Paper</button>
+        <button (click)="getOutcome(2)">Scissors</button>
     </div>
     <ng-template #elseBlock>
         <button (click)="homeMenu()">Home Menu</button>
