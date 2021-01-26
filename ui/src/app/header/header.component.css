@@ -8,5 +8,8 @@
     border-color: #e6e6e6;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 0 50px 0;
-  }
-  
+}
+
+img {
+  max-width: 200px;
+}
