@@ -9,33 +9,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./match-view.component.css']
 })
 export class MatchViewComponent implements OnInit {
-  gameIsInSession: Boolean = true;
-  message: String = "Rock, paper, scissors, shoot!";
-  userImg: String = "../../assets/Ready(0)-icon(0).png";
-  botImg: String = "../../assets/Ready-icon(0).png";
-  moves: String[] = ["Rock", "Paper", "Scissors"];
+  gameIsInSession = true;
+  message = 'Rock, paper, scissors, shoot!';
+  userImg = '../../assets/Ready(0)-icon(0).png';
+  botImg = '../../assets/Ready-icon(0).png';
+  moves = ['Rock', 'Paper', 'Scissors'];
   outcome: Outcome = {
     userMove: 0,
     botMove: 0,
     userWins: false,
     isADraw: false
   };
-  
-  constructor(private outcomeService: OutcomeService, private router: Router) { 
-    
+
+  constructor(private outcomeService: OutcomeService, private router: Router) {
+
   }
 
   ngOnInit(): void {
     this.router.events.subscribe();
   }
 
-  getOutcome(userMove: number) {
+  getOutcome(userMove: number): void {
     this.outcomeService.getOutcome(userMove).subscribe((res) => {
       this.outcome = res;
-      this.userImg = `../../assets/${this.moves[this.outcome.userMove]}-icon(0).png`
-      this.botImg = `../../assets/${this.moves[this.outcome.botMove]}-icon(0).png`
+      this.userImg = `../../assets/${this.moves[this.outcome.userMove]}-icon(0).png`;
+      this.botImg = `../../assets/${this.moves[this.outcome.botMove]}-icon(0).png`;
       if (this.outcome.isADraw) {
-        this.message = "It's a draw. Continue the match...";
+        this.message = 'It\'s a draw. Continue the match...';
       } else if (this.outcome.userWins) {
         this.message = `Your ${this.moves[this.outcome.userMove]} beats ${this.moves[this.outcome.botMove]}! You Win!`;
         this.gameIsInSession = false;
@@ -46,12 +46,11 @@ export class MatchViewComponent implements OnInit {
     });
   }
 
-  startNewMatch() {
-    this.router.navigateByUrl('redirect', {skipLocationChange: true}).then(()=>
-    this.router.navigate(["match"]));
+  startNewMatch(): void {
+    this.router.navigateByUrl('redirect', {skipLocationChange: true}).then(() => this.router.navigate(['match']));
   }
 
-  homeMenu() {
-    this.router.navigate([""]);
+  homeMenu(): void {
+    this.router.navigate(['']);
   }
 }

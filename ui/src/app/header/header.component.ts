@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe();
   }
 
-  homeMenu() {
+  homeMenu(): void {
     this.router.navigate(['']);
   }
 }

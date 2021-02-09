@@ -14,7 +14,7 @@ export class HomeViewComponent implements OnInit {
     this.router.events.subscribe();
   }
 
-  startNewMatch() {
+  startNewMatch(): void {
     this.router.navigate(['match']);
   }
 }
