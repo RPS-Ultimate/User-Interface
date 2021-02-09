@@ -22,7 +22,7 @@ jobs:
     defaults:
       run:
         working-directory: ${{ env.WORKING_DIRECTORY }}
-    name: build_angular
+    name: build
     runs-on: ubuntu-20.04
     steps:
       - name: actions_checkout
