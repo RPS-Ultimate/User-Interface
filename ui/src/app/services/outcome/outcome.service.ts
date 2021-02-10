@@ -10,6 +10,6 @@ export class OutcomeService {
   constructor(private httpClient: HttpClient) { }
 
   getOutcome(userMove: number): Observable<any> {
-    return this.httpClient.get(`https://localhost:5001/api/outcome/${userMove}`);
+    return this.httpClient.get(`10.244.2.10/api/outcome/${userMove}`);
   }
 }
