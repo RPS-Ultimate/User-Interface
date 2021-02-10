@@ -2,7 +2,7 @@
 
 FROM node:alpine AS build
 WORKDIR /workspace
-COPY . .
+COPY ./ui .
 RUN npm install 
 RUN npm run build
 
