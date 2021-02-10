@@ -1,7 +1,7 @@
 # stage 1
 
 FROM node:alpine AS build
-WORKDIR /ui
+WORKDIR /app
 COPY . .
 RUN npm install 
 RUN npm run build
