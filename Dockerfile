@@ -3,7 +3,8 @@
 FROM node:alpine AS build
 WORKDIR /ui
 COPY . .
-RUN npm install && npm run build
+RUN npm install 
+RUN npm run build
 
 
 # stage 2
