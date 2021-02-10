@@ -1,14 +1,14 @@
 # stage 1
 
 FROM node:alpine AS build
-WORKDIR /app
+WORKDIR /workspace
 COPY . .
-RUN npm install 
+RUN npm clean-install 
 RUN npm run build
 
 
 # stage 2
 
 FROM nginx:alpine
-COPY --from=build /app/dist/ui /usr/share/nginx/html
+COPY --from=build /workspace/dist/ /usr/share/nginx/html
 EXPOSE 80
