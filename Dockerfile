@@ -3,7 +3,7 @@ FROM node:10-alpine as builder
 # copy the package.json to install dependencies
 COPY ./ui/package.json ./ui/package-lock.json ./
 # Install the dependencies and make the folder
-RUN npm install && mkdir /app && mv ./ui/node_modules ./app
+RUN npm install && mkdir /app && mv ./node_modules ./app
 WORKDIR /app
 COPY ./ui .
 # Build the project and copy the files
