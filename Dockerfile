@@ -4,7 +4,7 @@ FROM node:alpine AS build
 WORKDIR /workspace
 COPY . .
 RUN npm install 
-RUN npm run-script build
+RUN npm run build
 
 
 # stage 2
