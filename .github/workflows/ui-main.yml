@@ -51,8 +51,8 @@ jobs:
       with:
         namespace: user-interface
         manifests: |
-          manifests/deployment-1.yml
-          manifests/service-1.yml
+          manifests/deployment.yml
+          manifests/service.yml
         images: |
           rpsbattle.azurecr.io/userinterface:${{ github.sha }}
         imagepullsecrets: |
