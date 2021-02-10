@@ -3,7 +3,7 @@
 FROM node:alpine AS build
 WORKDIR /workspace
 COPY . .
-RUN npm clean-install 
+RUN npm install 
 RUN npm run build
 
 
