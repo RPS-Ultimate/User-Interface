@@ -1,7 +1,7 @@
 # stage1 as builder
 FROM node:10-alpine as builder
 # copy the package.json to install dependencies
-COPY package.json package-lock.json ./ui/
+COPY package.json package-lock.json ui/
 # Install the dependencies and make the folder
 RUN npm install && mkdir /app-ui && mv ./node_modules ./app-ui
 WORKDIR /app-ui
