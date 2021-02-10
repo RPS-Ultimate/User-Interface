@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # stage1 as builder
 FROM node:10-alpine as builder
 # copy the package.json to install dependencies
@@ -8,14 +7,6 @@ RUN npm install && mkdir /app && mv ./ui/node_modules ./app
 WORKDIR /app
 COPY ./ui .
 # Build the project and copy the files
-=======
-# stage 1
-
-FROM node:alpine AS build
-WORKDIR /workspace
-COPY ./ui .
-RUN npm install 
->>>>>>> e77f144000927296381d56964603b24cd486dbe3
 RUN npm run build
 
 FROM nginx:alpine
