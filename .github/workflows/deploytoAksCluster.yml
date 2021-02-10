@@ -1,0 +1,50 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: rpsbattle.azurecr.io
+        username: ${{ secrets.acr_rpsbattle_username }}
+        password: ${{ secrets.acr_rpsbattle_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t rpsbattle.azurecr.io/rpsbattle:${{ github.sha }}
+        docker push rpsbattle.azurecr.io/rpsbattle:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_rpsbattle_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep user-interface | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace user-interface`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: user-interface
+        container-registry-url: rpsbattle.azurecr.io
+        container-registry-username: ${{ secrets.acr_rpsbattle_username }}
+        container-registry-password: ${{ secrets.acr_rpsbattle_password }}
+        secret-name: rpsbattledockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: user-interface
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-1.yml
+        images: |
+          rpsbattle.azurecr.io/rpsbattle:${{ github.sha }}
+        imagepullsecrets: |
+          rpsbattledockerauth
