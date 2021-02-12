@@ -1,0 +1,17 @@
+{
+    "api": {
+      "game-manager": {
+        "base": "http://13.89.109.81/",
+        "uri": {
+          "outcome": "api/outcome/"
+        }
+      },
+      "auth":{
+        "base": "",
+        "uri":{
+          "login": "api/auth/login",
+          "register": "api/auth/register/"
+        }
+      }
+    }
+  }
